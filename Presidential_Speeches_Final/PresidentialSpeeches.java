@@ -56,12 +56,10 @@ String currentWord1 = "";
 for (int i = 0; i < rawJson1.length(); i++) {
     char c = rawJson1.charAt(i); //grabs the current character as a variable 'c'
 
-    if (c != ' ') {
-        //if the current character isn't a space, it adds that character to the current word
-        currentWord1 += c;
-    } else {
-        if (currentWord1.length() > 0) {
-            //only runs if the current character is a space
+    
+    if (c == ' ') {
+        if (currentWord1.length() > 0){
+            //only runs if the current character is a space and the word is at least one character
             wordCount1++; //updates word count because space means the word just ended
             totalLetters1 += currentWord1.length(); //updates total letters by that words length
 
@@ -74,16 +72,25 @@ for (int i = 0; i < rawJson1.length(); i++) {
             } else if (currentWord1.toUpperCase().equals("OUR")) {
                 ourCount1++;
             }
-
             currentWord1 = "";
-            //68-76 checks if the word is equal to the 4 key words, and 78 resets the word back to a empty string
+            //checks if the word is a key word and updates counter, and resets word
+        }
+    
+    } 
+    else if (String.valueOf(c).matches("\\p{Punc}")){
+        //By putting nothing in this else if, it skips the character if it is punctuation
+    }
+    else {
+        currentWord1 += c;
+         
+             //this else will only run if the current character is just a normal character, and it gets added to the word
         }
     }
-}
+
 
 System.out.println("Total Words: " + wordCount1);
 
-System.out.println("Average word length: " + (totalLetters1 / wordCount1));
+System.out.println("Average word length: " + ((double) totalLetters1 / wordCount1));
 
 System.out.println("People is used " + peopleCount1 + " times.");
 System.out.printf("People percentage: %.2f%%\n", ((double) peopleCount1 / wordCount1) * 100);
@@ -137,9 +144,7 @@ String currentWord2 = "";
 for (int i = 0; i < rawJson2.length(); i++) {
     char c = rawJson2.charAt(i);
 
-    if (c != ' ') {
-        currentWord2 += c;
-    } else {
+    if (c == ' ') {
         if (currentWord2.length() > 0) {
             wordCount2++;
             totalLetters2 += currentWord2.length();
@@ -153,16 +158,17 @@ for (int i = 0; i < rawJson2.length(); i++) {
             } else if (currentWord2.toUpperCase().equals("OUR")) {
                 ourCount2++;
             }
-
             currentWord2 = "";
         }
+    } else if (String.valueOf(c).matches("\\p{Punc}")) {
+    } else {
+        currentWord2 += c;
     }
 }
 
 System.out.println("Total Words: " + wordCount2);
 
-System.out.println("Average word length: " + (totalLetters2 / wordCount2));
-
+System.out.println("Average word length: " + ((double) totalLetters2 / wordCount2));
 
 System.out.println("People is used " + peopleCount2 + " times.");
 System.out.printf("People percentage: %.2f%%\n", ((double) peopleCount2 / wordCount2) * 100);
@@ -175,8 +181,6 @@ System.out.printf("United percentage: %.2f%%\n", ((double) unitedCount2 / wordCo
 
 System.out.println("Our is counted " + ourCount2 + " times.");
 System.out.printf("Our percentage: %.2f%%\n", ((double) ourCount2 / wordCount2) * 100);
-
-
 
 File file3 = new File("C:\\Users\\rcriddell\\Downloads\\Presidential-Speeches-main\\Presidential-Speeches-main\\Presidential Speeches\\speeches\\Speech3.json");
 Scanner scanner3 = new Scanner(file3);
@@ -213,9 +217,7 @@ String currentWord3 = "";
 for (int i = 0; i < rawJson3.length(); i++) {
     char c = rawJson3.charAt(i);
 
-    if (c != ' ') {
-        currentWord3 += c;
-    } else {
+    if (c == ' ') {
         if (currentWord3.length() > 0) {
             wordCount3++;
             totalLetters3 += currentWord3.length();
@@ -229,16 +231,17 @@ for (int i = 0; i < rawJson3.length(); i++) {
             } else if (currentWord3.toUpperCase().equals("OUR")) {
                 ourCount3++;
             }
-
             currentWord3 = "";
         }
+    } else if (String.valueOf(c).matches("\\p{Punc}")) {
+    } else {
+        currentWord3 += c;
     }
 }
 
 System.out.println("Total Words: " + wordCount3);
 
-System.out.println("Average word length: " + (totalLetters3 / wordCount3));
-
+System.out.println("Average word length: " + ((double) totalLetters3 / wordCount3));
 
 System.out.println("People is used " + peopleCount3 + " times.");
 System.out.printf("People percentage: %.2f%%\n", ((double) peopleCount3 / wordCount3) * 100);
@@ -251,8 +254,6 @@ System.out.printf("United percentage: %.2f%%\n", ((double) unitedCount3 / wordCo
 
 System.out.println("Our is counted " + ourCount3 + " times.");
 System.out.printf("Our percentage: %.2f%%\n", ((double) ourCount3 / wordCount3) * 100);
-
-
 
 File file4 = new File("C:\\Users\\rcriddell\\Downloads\\Presidential-Speeches-main\\Presidential-Speeches-main\\Presidential Speeches\\speeches\\Speech4.json");
 Scanner scanner4 = new Scanner(file4);
@@ -289,9 +290,7 @@ String currentWord4 = "";
 for (int i = 0; i < rawJson4.length(); i++) {
     char c = rawJson4.charAt(i);
 
-    if (c != ' ') {
-        currentWord4 += c;
-    } else {
+    if (c == ' ') {
         if (currentWord4.length() > 0) {
             wordCount4++;
             totalLetters4 += currentWord4.length();
@@ -305,16 +304,17 @@ for (int i = 0; i < rawJson4.length(); i++) {
             } else if (currentWord4.toUpperCase().equals("OUR")) {
                 ourCount4++;
             }
-
             currentWord4 = "";
         }
+    } else if (String.valueOf(c).matches("\\p{Punc}")) {
+    } else {
+        currentWord4 += c;
     }
 }
 
 System.out.println("Total Words: " + wordCount4);
 
-System.out.println("Average word length: " + (totalLetters4 / wordCount4));
-
+System.out.println("Average word length: " + ((double) totalLetters4 / wordCount4));
 
 System.out.println("People is used " + peopleCount4 + " times.");
 System.out.printf("People percentage: %.2f%%\n", ((double) peopleCount4 / wordCount4) * 100);
@@ -327,8 +327,6 @@ System.out.printf("United percentage: %.2f%%\n", ((double) unitedCount4 / wordCo
 
 System.out.println("Our is counted " + ourCount4 + " times.");
 System.out.printf("Our percentage: %.2f%%\n", ((double) ourCount4 / wordCount4) * 100);
-
-
 
 File file5 = new File("C:\\Users\\rcriddell\\Downloads\\Presidential-Speeches-main\\Presidential-Speeches-main\\Presidential Speeches\\speeches\\Speech5.json");
 Scanner scanner5 = new Scanner(file5);
@@ -365,9 +363,7 @@ String currentWord5 = "";
 for (int i = 0; i < rawJson5.length(); i++) {
     char c = rawJson5.charAt(i);
 
-    if (c != ' ') {
-        currentWord5 += c;
-    } else {
+    if (c == ' ') {
         if (currentWord5.length() > 0) {
             wordCount5++;
             totalLetters5 += currentWord5.length();
@@ -381,16 +377,17 @@ for (int i = 0; i < rawJson5.length(); i++) {
             } else if (currentWord5.toUpperCase().equals("OUR")) {
                 ourCount5++;
             }
-
             currentWord5 = "";
         }
+    } else if (String.valueOf(c).matches("\\p{Punc}")) {
+    } else {
+        currentWord5 += c;
     }
 }
 
 System.out.println("Total Words: " + wordCount5);
 
-System.out.println("Average word length: " + (totalLetters5 / wordCount5));
-
+System.out.println("Average word length: " + ((double) totalLetters5 / wordCount5));
 
 System.out.println("People is used " + peopleCount5 + " times.");
 System.out.printf("People percentage: %.2f%%\n", ((double) peopleCount5 / wordCount5) * 100);
@@ -403,8 +400,6 @@ System.out.printf("United percentage: %.2f%%\n", ((double) unitedCount5 / wordCo
 
 System.out.println("Our is counted " + ourCount5 + " times.");
 System.out.printf("Our percentage: %.2f%%\n", ((double) ourCount5 / wordCount5) * 100);
-
-
 
 File file6 = new File("C:\\Users\\rcriddell\\Downloads\\Presidential-Speeches-main\\Presidential-Speeches-main\\Presidential Speeches\\speeches\\Speech6.json");
 Scanner scanner6 = new Scanner(file6);
@@ -441,9 +436,7 @@ String currentWord6 = "";
 for (int i = 0; i < rawJson6.length(); i++) {
     char c = rawJson6.charAt(i);
 
-    if (c != ' ') {
-        currentWord6 += c;
-    } else {
+    if (c == ' ') {
         if (currentWord6.length() > 0) {
             wordCount6++;
             totalLetters6 += currentWord6.length();
@@ -457,16 +450,17 @@ for (int i = 0; i < rawJson6.length(); i++) {
             } else if (currentWord6.toUpperCase().equals("OUR")) {
                 ourCount6++;
             }
-
             currentWord6 = "";
         }
+    } else if (String.valueOf(c).matches("\\p{Punc}")) {
+    } else {
+        currentWord6 += c;
     }
 }
 
 System.out.println("Total Words: " + wordCount6);
 
-System.out.println("Average word length: " + (totalLetters6 / wordCount6));
-
+System.out.println("Average word length: " + ((double) totalLetters6 / wordCount6));
 
 System.out.println("People is used " + peopleCount6 + " times.");
 System.out.printf("People percentage: %.2f%%\n", ((double) peopleCount6 / wordCount6) * 100);
@@ -479,7 +473,6 @@ System.out.printf("United percentage: %.2f%%\n", ((double) unitedCount6 / wordCo
 
 System.out.println("Our is counted " + ourCount6 + " times.");
 System.out.printf("Our percentage: %.2f%%\n", ((double) ourCount6 / wordCount6) * 100);
-System.out.println("=======================================================");
 }
 
 
